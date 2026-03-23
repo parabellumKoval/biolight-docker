@@ -1,0 +1,71 @@
+@import "@/assets/scss/global/vars";
+@import "@/assets/scss/global/mixins";
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+	border-radius: 100px;
+	padding: 0 10px;
+	transition: background 0.3s, border 0.3s, color 0.3s;
+  
+  span {
+		padding: 0 5px 3px 5px;  
+  }
+  
+  @include _1024 {
+    max-width: 215px;
+  }
+
+  @include _768 {
+    max-width: 100%;
+  }
+	  
+	&-primary {
+	  background: $color-green;
+	  color: $color-white;
+	  border: none;
+	
+	  &:hover {
+	    background: $color-green-hover;
+	  }
+	}
+	
+	&-secondary {
+		background: $color-white;
+	  color: $color-green;
+	  border: 1px solid $color-green;
+		text-transform: uppercase;
+	  
+	  &:hover {
+	    color: $color-green-hover;
+			border: 1px solid $color-green-hover;
+	  }
+	}
+	
+	&-text {
+		display: flex;
+		align-items: center;
+		height: initial;
+		width: initial;
+	  color: $color-green;
+	  
+	  i {
+		  display: inline-block;
+		  padding-top: 5px;
+		  transform: rotate(-90deg);
+		  transition: transform 0.3s;
+	  }
+	  
+	  &:hover {
+	    color: $color-green-hover;
+	    
+	    i {
+		  	transform: rotate(-90deg) translateY(10px);
+	    }
+	  }
+	}
+}

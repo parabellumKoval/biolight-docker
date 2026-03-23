@@ -1,0 +1,61 @@
+services:
+  api:
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: ${APP_URL:-http://localhost:8088}
+      LOG_LEVEL: ${LOG_LEVEL:-debug}
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION:-database}
+    volumes:
+      - ./src/api:/var/www/html
+      - api_vendor:/var/www/html/vendor
+
+  queue:
+    build:
+      context: .
+      dockerfile: .docker/api/Dockerfile
+    restart: unless-stopped
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_KEY: ${APP_KEY}
+      APP_URL: ${APP_URL:-http://localhost:8088}
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION:-database}
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: ${MYSQL_DATABASE}
+      DB_USERNAME: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      LOG_CHANNEL: stack
+      LOG_LEVEL: ${LOG_LEVEL:-debug}
+      TZ: ${TZ:-Europe/Kiev}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./src/api:/var/www/html
+      - api_vendor:/var/www/html/vendor
+    command: php artisan queue:work database --sleep=3 --tries=3 --timeout=90
+
+  front4:
+    build:
+      target: dev
+    environment:
+      NODE_ENV: development
+      NUXT_API_BASE_URL: ${NUXT4_API_BASE_URL:-http://api:8080/api/}
+    command: sh -lc "npm install --no-fund --no-audit && exec npm run dev"
+    volumes:
+      - ./src/nuxt4:/app
+      - front4_node_modules:/app/node_modules
+      - front4_nuxt:/app/.nuxt
+      - front4_output:/app/.output
+    ports:
+      - "${DEV_NUXT4_PORT:-3080}:3000"
+
+  nginx:
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+      SERVER_ALIASES: ${SERVER_ALIASES:-}
+    ports:
+      - "${DEV_NGINX_PORT:-8088}:80"

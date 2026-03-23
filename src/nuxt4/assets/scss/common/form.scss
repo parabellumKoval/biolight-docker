@@ -1,0 +1,63 @@
+.form {
+	&__label {
+    width: 100%;
+	  min-height: 50px;
+    padding: 9px 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    border: 1px solid $color-dark;
+    border-radius: 100px;
+
+    @include _1024 {
+    }
+
+    @include _768 {
+      min-width: 100%;
+    }
+
+    &:not(:last-child) {
+      @include _768 {
+        margin-bottom: 20px;
+      }
+    }
+
+    & span {
+	    flex-shrink: 0;
+      margin-right: 10px;
+      color: $color-grey;
+      transition: color 0.3s;
+    }
+
+    & input,
+    & textarea {
+	    width: 100%;
+			height: 25px;
+      font-size: 18px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      transition: border 0.3s;
+      overflow: hidden;
+
+      &::placeholder {
+        color: $color-grey;
+//         @extend %helvetica-400;
+      }
+      
+      &:focus {
+	      & + span {
+		      color: $color-dark;
+	      }
+      }
+    }
+    
+    &.error {
+		  border-color: #E54D42;
+    }
+
+    &--comment {
+      max-width: 100%;
+    }
+  }
+}

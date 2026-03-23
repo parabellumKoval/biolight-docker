@@ -1,0 +1,187 @@
+@import "@/assets/scss/global/vars";
+@import "@/assets/scss/global/mixins";
+
+.contacts {
+	position:relative;
+	margin: 45px 0 70px 0;
+	padding: 40px 60px 20px 60px;
+	background: $color-white;
+	border-radius: 15px;
+	
+	@include _768 {
+		margin: 25px 0 50px -20px;
+		padding: 30px 20px 20px 20px;    
+		width: calc(100% + 40px);
+    border-radius: 0;
+	}
+	
+		
+	&__title {
+		position: relative;
+		font-size: 22px;
+		color: $color-green;
+		margin-bottom: 30px;
+		z-index: 2;
+		
+		@include _768 {
+			font-size: 18px;
+			text-align: center;
+		}
+	}
+	
+	&__inner {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		z-index: 2;
+		
+		
+		@include _640{ 
+			align-items: center;
+			flex-direction: column;
+			text-align:center;
+		}
+	}
+	
+	&__item {
+		color: $color-black;
+		
+		&:nth-child(2) {
+			padding:0 40px 0 70px;
+		}
+		
+		@include _640{
+			padding: 0 !important;
+			margin-bottom: 30px;
+		}
+		
+		&-title {
+			display: flex;
+			align-items: center;
+			color: $color-grey;
+			margin-bottom: 5px;
+			
+			@include _640{
+				justify-content: center;
+			}
+			
+			.icon {
+				font-size: 28px;
+				padding-right: 10px;
+			}
+		}
+		
+		&-value {
+			line-height: 160%;
+		}
+	}
+	
+	&-bg {
+		position: absolute;
+		top:0;
+		right: 0;
+		width: 450px;
+		height: 100%;
+		border-radius: 0 15px 15px 0;
+		overflow: hidden;
+		
+		@include _768 {
+			display: none;
+		}
+		
+		img,
+		picture {
+			width: 100%;
+			height: 100%;
+			object-fit:cover;
+		}
+		
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 53.13%, #FFFFFF 100%);
+		}
+	}
+	
+	&-img {
+		display: flex;
+		align-items: flex-end;
+		position: absolute;
+		bottom: 0;
+		right: -30px;
+		width: initial;
+		height: calc(100% + 30px);
+		
+		
+		@include _1024 {
+			right: -120px;
+		}
+		
+		@include _768 {
+			display: none;
+		}
+		
+		picture {
+			display: flex;
+		}
+		
+		img,
+		picture {
+			width: 100%;
+			height: 100%;
+			object-fit:contain;
+			object-position: right bottom; 
+		}
+	}
+}
+
+.socials {
+  padding: 0 0 0 40px;
+  border-left: 1px solid $color-lighter;
+	
+	@include _640{
+  	padding: 0;
+		border-left: 0;
+	}
+	
+  &__items {
+
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+		
+		@include _768 {
+			margin-bottom: 15px;
+			
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		
+		img {
+			width: 22px;
+			height: 22px;	
+		}
+		
+    a {
+      color: $color-black;
+      
+      &:hover {
+	      color: $color-green-hover;
+      }
+    }
+
+    span {
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  }
+}

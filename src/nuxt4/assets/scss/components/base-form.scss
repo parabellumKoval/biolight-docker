@@ -1,0 +1,121 @@
+@import "@/assets/scss/global/vars";
+@import "@/assets/scss/global/mixins";
+@import "@/assets/scss/common/form";
+@import "@/assets/scss/common/button";
+
+.form {
+	margin: 0 0 100px 0;
+  padding: 80px 20px;
+  background-color: $color-white;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+  
+
+	.title {
+		color: $color-green;
+		font-wieght: 400;
+	}
+	
+	@include _1024 {
+			margin: 0 0 70px 0;
+	}
+		
+  @include _768 {
+    padding: 40px 20px;
+		margin: 0 0 0 -20px;
+	  width: calc(100% + 40px);
+  	border-radius: 0;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+      margin-bottom: 70px;
+
+      @include _1024 {
+        font-size: 24px;
+	      margin-bottom: 50px;
+      }
+
+      @include _768 {
+        font-size: 20px;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+
+      &::before {
+        height: 0;
+      }
+    }
+  }
+
+  &__inner {
+	  max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+    
+    @include _768 {
+      flex-direction: column;
+      
+	    &:not(:last-child) {
+	      margin-bottom: 20px;
+	    }
+    }
+  }
+
+  &__label {
+    margin-right: 30px;
+    background-color: $color-light;
+    
+    &:last-child {
+    	margin-right: 0;
+    }
+    
+		@include _768 {
+    	margin-right: 0;
+		}
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include _1200 {
+      padding: 0;
+    }
+
+    @include _768 {
+      flex-direction: column;
+      text-align: center;
+    }
+
+  }
+  
+  &__meta {
+	  padding: 15px 0;
+    max-width: 635px;
+    margin-right: 25px;
+    display: inline-block;
+
+    @include _768 {
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+	  color: $color-grey;
+  }
+}

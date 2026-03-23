@@ -1,0 +1,122 @@
+@import "@/assets/scss/global/vars";
+@import "@/assets/scss/global/mixins";
+
+.social {
+	position: fixed;
+	right: 30px;
+	bottom: 20px;
+	height: 60px;
+	width: 60px;
+	padding: 30px;
+	z-index: 90;
+	transition: all 0.3s;
+	
+	@include _768 {
+		right:10px;
+		bottom: 10px;
+	}
+	
+	&__icon {
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		position: absolute;
+		top:0;
+		left: 0;
+		width:100%;
+		height: 100%;
+		z-index: 3;
+		color: $color-green-hover;
+		
+		transition: opacity 0.3s;
+	}
+	
+	&__title {    
+		position: relative;
+    margin-bottom: 20px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+	
+	&:before {
+		content: '';
+		position: absolute;
+		top:0;
+		left:0;
+		width: 100%;
+		height: 100%;
+		background: $color-white;
+		border-radius: 100%;
+		border: 1px solid $color-green-hover;
+		transition: all 0.3s;
+		box-shadow: 0px 0px 15px rgba(0,0,0,0.07);
+		animation: blick 3s infinite;
+		animation-delay: 2s;
+	}
+	
+	&:hover,
+	&.active {
+		height: 280px;
+		width: 280px;
+		
+		&:before {
+			animation: none;
+			border-radius: 15px;
+		}
+		
+		.socials__items {
+			opacity: 1;
+			z-index: 1;
+			transition: opacity 0.3s 0.2s;
+		}
+		
+		.social__icon {
+			opacity: 0;
+			z-index: -1;
+		}
+		.social__title {
+			opacity: 1;
+			z-index: 2;
+		}
+	}
+}
+.socials {
+	&__items{
+		position: relative;
+		opacity: 0;
+		z-index: -1;
+		transition: opacity 0.05s;
+	}
+	
+	&__item {
+		position: relative;
+		display: flex;
+		align-items:center;
+		justify-content: flex-start;
+		margin-bottom: 20px;
+		z-index: 4;
+		
+		img {
+			height: 30px;
+			width: 30px;
+		}
+		
+		a {
+			margin-left: 10px;
+		}
+	}
+}
+
+@keyframes blick {
+  0% {
+		border-left-color: $color-green;
+    transform: rotate(0deg);
+  }
+	50% {
+		border-left-color: $color-green-hover;
+	}
+  100% {
+		border-left-color: $color-green;
+    transform: rotate(360deg);
+  }
+}

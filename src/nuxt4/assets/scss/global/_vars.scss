@@ -1,0 +1,35 @@
+$color-white: #FFFFFF;
+$color-light: #F9F9F9;
+$color-lighter: #F2F2F2;
+$color-black: #000000;
+$color-green: #82c122;
+$color-green-hover: #8FE310;
+$color-green-light: #F3F6EE;
+$color-dark: #484848;
+$color-grey: #aeaeae;
+
+$title: #484848;
+$hover: #8fe310;
+$disable: #aeaeae;
+
+/*
+%helvetica-400 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-weight: 400;
+}
+%helvetica-700 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-weight: 700;
+}
+%helvetica-900 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-weight: 900;
+}
+*/
+
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers});
+}
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}

@@ -1,0 +1,281 @@
+/*
+@font-face {
+  font-family: "HelveticaNeueCyr";
+  src: url("@/assets/fonts/HelveticaNeueCyr-BlackItalic.eot");
+  src: local("HelveticaNeueCyr-BlackItalic"),
+  url("@/assets/fonts/HelveticaNeueCyr-BlackItalic.eot?#iefix") format("embedded-opentype"),
+  url("@/assets/fonts/HelveticaNeueCyr-BlackItalic.woff2") format("woff2"),
+  url("@/assets/fonts/HelveticaNeueCyr-BlackItalic.ttf") format("ttf");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelveticaNeueCyr";
+  src: url("@/assets/fonts/HelveticaNeueCyr-Italic.eot");
+  src: local("HelveticaNeueCyr-Italic"),
+  url("@/assets/fonts/HelveticaNeueCyr-Italic.eot?#iefix") format("embedded-opentype"),
+  url("@/assets/fonts/HelveticaNeueCyr-Italic.woff2") format("woff2"),
+  url("@/assets/fonts/HelveticaNeueCyr-Italic.ttf") format("ttf");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelveticaNeueCyr";
+  src: url("@/assets/fonts/HelveticaNeueCyr-Roman.eot");
+  src: local("HelveticaNeueCyr-Roman"),
+  url("@/assets/fonts/HelveticaNeueCyr-Roman.eot?#iefix") format("embedded-opentype"),
+  url("@/assets/fonts/HelveticaNeueCyr-Roman.woff2") format("woff2"),
+  url("@/assets/fonts/HelveticaNeueCyr-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelveticaNeueCyr";
+  src: url("@/assets/fonts/HelveticaNeueCyr-Bold.eot");
+  src: local("HelveticaNeueCyr-Bold"),
+  url("@/assets/fonts/HelveticaNeueCyr-Bold.eot?#iefix") format("embedded-opentype"),
+  url("@/assets/fonts/HelveticaNeueCyr-Bold.woff2") format("woff2"),
+  url("@/assets/fonts/HelveticaNeueCyr-Bold.ttf") format("ttf");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+@font-face {
+  font-family: "icomoon";
+  src: url("@/assets/fonts/icomoon.eot?v1a3ir");
+  src: url("@/assets/fonts/icomoon.eot?v1a3ir#iefix") format("embedded-opentype"),
+  url("@/assets/fonts/icomoon.ttf?v1a3ir") format("truetype"),
+  url("@/assets/fonts/icomoon.woff?v1a3ir") format("woff"),
+  url("@/assets/fonts/icomoon.svg?v1a3ir#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "icomoon" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  &:before {
+  	color: inherit;
+  }
+}
+
+// ICON SIZES
+.icon-8 {
+  font-size: 8px;
+}
+
+.icon-10 {
+  font-size: 10px;
+}
+
+.icon-11 {
+  font-size: 11px;
+}
+
+.icon-12 {
+  font-size: 12px;
+}
+
+.icon-13 {
+  font-size: 13px;
+}
+
+.icon-14 {
+  font-size: 14px;
+}
+
+.icon-15 {
+  font-size: 15px;
+}
+
+.icon-16 {
+  font-size: 16px;
+}
+
+.icon-17 {
+  font-size: 17px;
+}
+
+.icon-18 {
+  font-size: 18px;
+}
+
+.icon-19 {
+  font-size: 19px;
+}
+
+.icon-20 {
+  font-size: 20px;
+}
+
+.icon-21 {
+  font-size: 21px;
+}
+
+.icon-22 {
+  font-size: 22px;
+}
+
+.icon-23 {
+  font-size: 23px;
+}
+
+.icon-24 {
+  font-size: 24px;
+}
+
+.icon-25 {
+  font-size: 25px;
+}
+
+.icon-26 {
+  font-size: 26px;
+}
+
+.icon-27 {
+  font-size: 27px;
+}
+
+.icon-28 {
+  font-size: 28px;
+}
+
+.icon-29 {
+  font-size: 29px;
+}
+
+.icon-30 {
+  font-size: 30px;
+}
+
+.icon-31 {
+  font-size: 31px;
+}
+
+.icon-32 {
+  font-size: 32px;
+}
+
+.icon-33 {
+  font-size: 33px;
+}
+
+.icon-34 {
+  font-size: 34px;
+}
+
+.icon-35 {
+  font-size: 35px;
+}
+
+.icon-36 {
+  font-size: 36px;
+}
+
+// ICON SIZES
+
+// ICON TRANSITIONS
+.icon-hover {
+  &:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+}
+
+.icon-microscope:before {
+  content: "\e909";
+}
+.icon-virus-sanitizer:before {
+  content: "\e90a";
+}
+.icon-roadmap:before {
+  content: "\e90b";
+}
+.icon-dhis2:before {
+  content: "\e90c";
+}
+.icon-bottle:before {
+  content: "\e90d";
+}
+.icon-pills-4:before {
+  content: "\e90e";
+}
+.icon-pharmacy:before {
+  content: "\e90f";
+}
+.icon-blister:before {
+  content: "\e910";
+}
+.icon-pill:before {
+  content: "\e911";
+}
+.icon-scales:before {
+  content: "\e912";
+}
+.icon-pills:before {
+  content: "\e913";
+}
+.icon-mail-reply:before {
+  content: "\e914";
+}
+.icon-phone-ring:before {
+  content: "\e915";
+}
+.icon-shield:before {
+  content: "\e916";
+}
+.icon-tablets:before {
+  content: "\e917";
+}
+.icon-team:before {
+  content: "\e918";
+}
+.icon-language:before {
+  content: "\e919";
+}
+.icon-feedback:before {
+  content: "\e903";
+}
+.icon-cart:before {
+  content: "\e906";
+}
+.icon-arrow-up-right:before {
+  content: "\e907";
+}
+.icon-close:before {
+  content: "\e908";
+}
+.icon-new-line:before {
+  content: "\e900";
+}
+.icon-phone:before {
+  content: "\e901";
+}
+.icon-email:before {
+  content: "\e902";
+}
+.icon-user:before {
+  content: "\e904";
+}
+.icon-arrow:before {
+  content: "\e905";
+}

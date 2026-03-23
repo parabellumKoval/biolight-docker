@@ -1,0 +1,226 @@
+@import "@/assets/scss/global/vars";
+@import "@/assets/scss/global/mixins";
+
+.header {
+	position: fixed;
+	top:0;
+	width: 100%;
+	z-index: 100;
+  padding: 15px 0;
+  background-color: $color-white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.07);
+  
+  @include _1024 {
+	  position: relative;
+  }
+  
+  @include _768 {
+	  margin-bottom: 30px;
+	  
+	  &.active {
+		  position: fixed;
+	  }
+  }
+  
+  &__wrapper {
+	  margin-top: 72px;
+	  
+		@include _1024 {
+			margin-top: 0;
+		}
+  }
+
+	&__logo {
+		margin-right: 50px;
+		
+		@include _1024 {
+			width: 156px;
+			height: 28px;
+			margin-right: 20px;
+		}
+		@include _768 {
+			width: 102px;
+			height: 18px;
+		}		
+	}
+	
+  &__inner {
+    display: grid;
+    grid-template-columns: minmax(min-content, max-content) auto;
+    
+    @include _1024 {
+    	grid-template-columns: minmax(min-content, max-content) auto minmax(min-content, max-content);
+    }
+    
+    @include _768 {
+	    grid-template-columns: auto minmax(min-content, max-content);
+    }
+  }
+  
+	&__box {
+		display: grid;
+    grid-template-columns: auto minmax(min-content, max-content);
+    
+    @include _768 {
+	    display: flex;
+	    flex-direction: column-reverse;
+	    justify-content: flex-end;
+	    align-items: center;
+	    position: fixed;
+		  left:0;
+	    opacity: 0;
+	    transition: opacity 0.3s;
+	    z-index: -1;
+			left: -1000px;
+	        
+	    &.active {
+		    top: 50px;
+		    left: 0;
+		    min-width: 100vw;
+		    width: 100%;
+		    height: calc(100vh - 50px);
+		    opacity: 1;
+		    background: $color-white;
+				z-index: 101;
+	    }
+	    
+	    &-lc {
+		    justify-content: space-between;
+		    width: 100%;
+		    padding: 20px 15px;
+		    border-top: 1px solid #F2F2F2;
+		    border-bottom: 1px solid #F2F2F2;
+	    }
+    }
+    
+    &-lc {
+	    display: flex;
+	    align-items: center;
+    }
+	}
+
+  &__lang {
+    padding: 0 30px 0 0;
+    margin: 0 30px 0 0;
+    display: flex;
+    align-items: center;
+    border: 0;
+    border-right: 1px solid #F2F2F2;
+    justify-self: flex-end;
+
+		@include _1024 {
+	    padding: 0 20px 0 0;
+	    margin: 0 20px 0 0;
+		}
+		
+		@include _768 {
+	  	
+	  }
+		
+    span {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+
+  &__contacts {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+		
+		@include _768 {
+	  	
+	  }
+	  
+    a {
+      color: $color-black;
+    }
+  }
+
+  &__contact {
+    bottom: -15px;
+    right: 0;
+    position: absolute;
+    color: $disable;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-green;
+    }
+
+    .icon-arrow {
+      display: inline-block;
+      transform: rotate(0deg);
+      transition: transform 0.3s;
+    }
+
+    &.active {
+      .icon-arrow {
+        transform: rotate(-180deg);
+        transition: transform 0.3s;
+      }
+    }
+  }
+  
+  @include _1024 {
+  
+  }
+}
+
+.menu-btn-mobile {
+	display: none;
+  align-items: center;
+	text-transform: uppercase;
+	color: $color-dark;
+	
+	&.active {
+		span {
+			height: 0;
+			
+			&:after {
+				width: 90%;
+				transform: rotate(-45deg);
+			}
+			
+			&:before {
+				width: 90%;
+				transform: rotate(45deg);
+			}
+		}
+	}
+	
+	@include _1024 {
+		display: flex;
+	}
+	
+	span {
+		position: relative;
+		width: 22px;
+		height: 2px;
+		background: $color-dark; 
+		display: inline-block;
+		margin-right: 10px;
+			
+		transition: height 0.1s;
+		
+		&:after,
+		&:before {
+			position: absolute;
+			content: '';
+			height: 2px;
+			width: 100%;
+			left: 0;
+			background: $color-dark; 
+			transition: transform 0.3s;
+			transform-origin: right center;
+		}
+		&:before {
+			top: 7px;
+		}
+		&:after {
+			top: -7px;
+		}
+	}
+}

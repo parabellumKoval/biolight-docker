@@ -1,0 +1,102 @@
+@import "@/assets/scss/global/vars";
+@import "@/assets/scss/global/mixins";
+@import "@/assets/scss/common/button";
+
+%round-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	color: $color-green;
+	border: 1px solid $color-green;
+	background: $color-white;
+	transition: border 0.3s, color 0.3s;
+	cursor: pointer;
+	
+	&.active,
+	&.meta {
+		color: $color-grey;
+		border: 1px solid $color-white;
+		cursor: default;
+		
+		&:hover {
+			color: $color-grey;
+			border: 1px solid $color-white;
+		}
+	}
+	
+	&:hover {
+		color: $color-green-hover;
+		border: 1px solid $color-green-hover;
+	}	
+}
+.pagination {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 60px 0 100px 0;
+	
+	@include _1024 {
+		justify-content: space-between;
+		margin: 50px 0 80px 0;
+	}
+	
+	@include _768 {
+		justify-content: center;
+		margin: 30px 0 50px 0;
+	}
+	
+	.btn {
+		width: 200px;
+		height: 40px;
+	}
+}
+.page {
+	&-counter{
+		position: absolute;
+		right:0;
+		top:0;
+		
+		@include _1024 {
+			position: relative;
+		}
+		
+		@include _768 {
+			display: none;
+		}
+		
+		&__inner {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			
+		}
+		
+		&__list {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			
+			li {
+				@extend %round-btn;
+			}
+		}
+		
+		&__prev,
+		&__next {
+				@extend %round-btn;
+		}
+		
+		&__prev {
+			transform: rotate(90deg);
+		}
+		&__next {
+			transform: rotate(-90deg);
+		}
+		
+	}
+}
