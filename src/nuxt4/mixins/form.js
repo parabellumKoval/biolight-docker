@@ -1,7 +1,7 @@
 export const form = {
 	data() {
 		return {
-			errors:{},
+			errors: {},
 			data: {
 				name: '',
 				email: '',
@@ -31,42 +31,74 @@ export const form = {
 				this.errors.text = null
 			}
 		}
+	},
+	methods: {
+		notify(payload = {}) {
+			const { $notify } = useNuxtApp()
+
+			if (typeof $notify === 'function') {
+				$notify({
+					group: 'header',
+					...payload
+				})
+			}
 		},
-		methods: {
-			send(){
-				this.$axios.post('fb', this.data).then(response => {
-					console.log(response);
-				
-				if(response.data.type === 'error'){
-					this.errors = response.data.errors;
-					
-					this.$notify({
-						  group: 'header',
-						  title: this.$t('title.error'),
-						  text: this.$t('title.ckeck_fields'),
-						  type: 'error'
-						});
-				}else {
-					
-					this.data = {
-						name: '',
-						email: '',
-						phone: '',
-						text: '',
-					}
-					
-					this.$store.commit('close', 'order')
-					
-					this.$notify({
-						  group: 'header',
-						  title: this.$t('title.thank'),
-						  text: this.$t('title.was_send'),
-						  type: 'success'
-						});					
+		resetForm() {
+			this.errors = {}
+			this.data = {
+				name: '',
+				email: '',
+				phone: '',
+				text: '',
+			}
+		},
+		async send() {
+			this.errors = {}
+
+			try {
+				const response = await this.$axios.post('fb', this.data)
+
+				if (response.data.type === 'error') {
+					this.errors = response.data.errors || {}
+
+					this.notify({
+						title: this.$t('title.error'),
+						text: this.$t('title.ckeck_fields'),
+						type: 'error'
+					})
+					return
 				}
-			}).catch(errors => {
-				console.log(errors);
-			})
+
+				this.resetForm()
+				this.$store.commit('close', 'order')
+
+				this.notify({
+					title: this.$t('title.thank'),
+					text: this.$t('title.was_send'),
+					type: 'success'
+				})
+			} catch (error) {
+				const response = error?.response
+				const responseData = response?._data || response?.data || {}
+
+				if (response?.status === 422 || responseData.type === 'error') {
+					this.errors = responseData.errors || {}
+
+					this.notify({
+						title: this.$t('title.error'),
+						text: this.$t('title.ckeck_fields'),
+						type: 'error'
+					})
+					return
+				}
+
+				console.error(error)
+				this.notify({
+					title: this.$t('title.error'),
+					text: responseData.message || error?.message || this.$t('title.ckeck_fields'),
+					type: 'error'
+				})
+			}
 		}
 	}
 }

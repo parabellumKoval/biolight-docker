@@ -4,7 +4,13 @@
       <div class="footer__top">
         <div class="footer__logo">
           <nuxt-link :to="localePath('/')">
-            <nuxt-picture src="/assets/icons/logo.png" sizes="sm:100px md:156px lg:230px" format="webp" />
+            <NuxtImg
+              src="/assets/icons/logo2.png"
+              alt="Bio Light"
+              width="1123"
+              height="238"
+              sizes="sm:250px lg:250px"
+            />
           </nuxt-link>
 
           <p class="footer__logo-desc">

@@ -1,0 +1,432 @@
+@import "@/assets/scss/global/vars";
+@import "@/assets/scss/global/mixins";
+
+.manufacturing {
+  &__title {
+    margin: 0 0 30px;
+  }
+
+  &__vitamin {
+    display: grid;
+    gap: 24px;
+  }
+
+  &__vitamin-stage {
+    position: relative;
+  }
+
+  &__vitamin-media {
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    background: $color-white;
+    box-shadow: 0 18px 44px rgba(37, 52, 9, 0.08);
+
+    @include _768 {
+      border-radius: 20px;
+      aspect-ratio: 1 / 1.08;
+    }
+
+    picture,
+    img {
+      display: block;
+      width: 100%;
+
+      @include _768 {
+        height: 100%;
+      }
+    }
+
+    img {
+      height: auto;
+      object-fit: cover;
+
+      @include _768 {
+        height: 100%;
+        object-position: center 52%;
+      }
+    }
+  }
+
+  &__vitamin-points {
+    @include _768 {
+      display: none;
+    }
+  }
+
+  &__vitamin-point {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    width: min(25%, 330px);
+
+    @include _1400 {
+      width: min(27%, 310px);
+    }
+
+    @include _1024 {
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 14px;
+      width: min(29%, 250px);
+    }
+  }
+
+  &__vitamin-point::after {
+    position: absolute;
+    content: "";
+    top: 28px;
+    width: 88px;
+    z-index: 0;
+    border-top: 2px dashed rgba(72, 72, 72, 0.24);
+
+    @include _1200 {
+      width: 60px;
+    }
+
+    @include _1024 {
+      width: 42px;
+    }
+  }
+
+  &__vitamin-point::before {
+    position: absolute;
+    content: none;
+    width: 0;
+    border-left: 2px dashed rgba(72, 72, 72, 0.24);
+    z-index: 0;
+  }
+
+  &__vitamin-point--left::after {
+    left: calc(100% + 16px);
+
+    @include _1200 {
+      left: calc(100% + 10px);
+    }
+  }
+
+  &__vitamin-point--right::after {
+    right: calc(100% + 16px);
+
+    @include _1200 {
+      right: calc(100% + 10px);
+    }
+  }
+
+  &__vitamin-point--right {
+    width: min(22%, 290px);
+
+    @include _1400 {
+      width: min(24%, 270px);
+    }
+
+    @include _1024 {
+      width: min(26%, 225px);
+    }
+  }
+
+  &__vitamin-point--left-1 {
+    top: 8%;
+    left: 3.5%;
+  }
+
+  &__vitamin-point--left-2 {
+    top: 38%;
+    left: 3.5%;
+  }
+
+  &__vitamin-point--left-3 {
+    top: 72%;
+    left: 3.5%;
+  }
+
+  &__vitamin-point--right-1 {
+    top: 8%;
+    right: 1.25%;
+  }
+
+  &__vitamin-point--right-2 {
+    top: 38%;
+    right: 1.25%;
+  }
+
+  &__vitamin-point--right-3 {
+    top: 72%;
+    right: 1.25%;
+  }
+
+  &__vitamin-point--left-1::after,
+  &__vitamin-point--right-1::after,
+  &__vitamin-point--left-3::after,
+  &__vitamin-point--right-3::after {
+    width: 72px;
+
+    @include _1200 {
+      width: 56px;
+    }
+
+    @include _1024 {
+      width: 40px;
+    }
+  }
+
+  &__vitamin-point--left-1::before,
+  &__vitamin-point--right-1::before,
+  &__vitamin-point--left-3::before,
+  &__vitamin-point--right-3::before {
+    content: "";
+  }
+
+  &__vitamin-point--left-1::before {
+    left: calc(100% + 88px);
+    top: 28px;
+    height: 38px;
+
+    @include _1200 {
+      left: calc(100% + 66px);
+    }
+
+    @include _1024 {
+      left: calc(100% + 50px);
+    }
+  }
+
+  &__vitamin-point--right-1::before {
+    right: calc(100% + 88px);
+    top: 28px;
+    height: 38px;
+
+    @include _1200 {
+      right: calc(100% + 66px);
+    }
+
+    @include _1024 {
+      right: calc(100% + 50px);
+    }
+  }
+
+  &__vitamin-point--left-3::before {
+    left: calc(100% + 88px);
+    top: -8px;
+    height: 36px;
+
+    @include _1200 {
+      left: calc(100% + 66px);
+    }
+
+    @include _1024 {
+      left: calc(100% + 50px);
+    }
+  }
+
+  &__vitamin-point--right-3::before {
+    right: calc(100% + 88px);
+    top: -8px;
+    height: 36px;
+
+    @include _1200 {
+      right: calc(100% + 66px);
+    }
+
+    @include _1024 {
+      right: calc(100% + 50px);
+    }
+  }
+
+  &__vitamin-point-icon {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid rgba(98, 136, 41, 0.75);
+    background: rgba(255, 255, 255, 0.9);
+    color: #516737;
+    font-size: 30px;
+    line-height: 1;
+    box-shadow: 0 12px 24px rgba(37, 52, 9, 0.08);
+
+    @include _1024 {
+      width: 48px;
+      height: 48px;
+      font-size: 24px;
+    }
+  }
+
+  &__vitamin-point-content {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__vitamin-point-title {
+    margin: 0;
+    color: #484848;
+    font-size: clamp(18px, 1.55vw, 25px);
+    font-weight: 400;
+    line-height: 1.08;
+
+    @include _1200 {
+      font-size: 20px;
+    }
+
+    @include _1024 {
+      font-size: 16px;
+    }
+  }
+
+  &__vitamin-point-text {
+    margin: 0;
+    color: rgba(72, 72, 72, 0.88);
+    font-size: clamp(13px, 1.05vw, 18px);
+    line-height: 1.28;
+
+    @include _1200 {
+      font-size: 14px;
+    }
+
+    @include _1024 {
+      font-size: 13px;
+    }
+  }
+
+  &__vitamin-mobile-list {
+    display: none;
+
+    @include _768 {
+      display: grid;
+      gap: 18px;
+    }
+  }
+
+  &__vitamin-mobile-item {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(130, 193, 34, 0.18);
+  }
+
+  &__vitamin-mobile-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  &__cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+
+    @include _1024 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    padding: 30px;
+    background: $color-white;
+
+    @include _768 {
+      padding: 30px 15px;
+    }
+  }
+
+  &__card--2 {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 2;
+    height: fit-content;
+
+    @include _1024 {
+      grid-row-start: initial;
+      grid-row-end: initial;
+      grid-column: initial;
+    }
+  }
+
+  &__card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    max-width: 300px;
+
+    @include _768 {
+      height: 170px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(276.99deg, #ffffff 7.61%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: linear-gradient(339.6deg, #ffffff 40.88%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    picture,
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__card-title {
+    position: relative;
+    z-index: 2;
+    width: 55%;
+    margin: 0 0 30px auto;
+    color: $color-black;
+    font-size: 24px;
+    text-align: right;
+
+    @include _768 {
+      width: 100%;
+      margin-top: 110px;
+      text-align: left;
+      font-size: 18px;
+    }
+  }
+
+  &__card-text {
+    position: relative;
+    z-index: 2;
+
+    p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

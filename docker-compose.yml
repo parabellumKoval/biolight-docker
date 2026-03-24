@@ -3,12 +3,17 @@ services:
     build:
       context: .
       dockerfile: .docker/api/Dockerfile
+      args:
+        COMPOSER_AUTH: ${COMPOSER_AUTH:-}
     restart: unless-stopped
     environment:
+      APP_NAME: ${APP_NAME:-BioLight}
       APP_ENV: ${APP_ENV:-production}
       APP_DEBUG: ${APP_DEBUG:-false}
       APP_KEY: ${APP_KEY}
       APP_URL: ${APP_URL:-https://example.com}
+      ADMIN_URL: ${ADMIN_URL:-}
+      ASSET_URL: ${ASSET_URL:-}
       QUEUE_CONNECTION: ${QUEUE_CONNECTION:-database}
       DB_CONNECTION: mysql
       DB_HOST: mysql
@@ -16,6 +21,16 @@ services:
       DB_DATABASE: ${MYSQL_DATABASE}
       DB_USERNAME: ${MYSQL_USER}
       DB_PASSWORD: ${MYSQL_PASSWORD}
+      MAIL_MAILER: ${MAIL_MAILER:-smtp}
+      MAIL_HOST: ${MAIL_HOST:-}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_ENCRYPTION: ${MAIL_ENCRYPTION:-tls}
+      MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS:-}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-${APP_NAME:-BioLight}}
+      FEEDBACK_NOTIFICATION_EMAIL: ${FEEDBACK_NOTIFICATION_EMAIL:-}
+      BACKPACK_REGISTRATION_OPEN: ${BACKPACK_REGISTRATION_OPEN:-false}
       LOG_CHANNEL: stack
       LOG_LEVEL: ${LOG_LEVEL:-warning}
       TZ: ${TZ:-Europe/Kiev}
@@ -32,12 +47,17 @@ services:
     build:
       context: .
       dockerfile: .docker/api/Dockerfile
+      args:
+        COMPOSER_AUTH: ${COMPOSER_AUTH:-}
     restart: unless-stopped
     environment:
+      APP_NAME: ${APP_NAME:-BioLight}
       APP_ENV: ${APP_ENV:-production}
       APP_DEBUG: ${APP_DEBUG:-false}
       APP_KEY: ${APP_KEY}
       APP_URL: ${APP_URL:-https://example.com}
+      ADMIN_URL: ${ADMIN_URL:-}
+      ASSET_URL: ${ASSET_URL:-}
       QUEUE_CONNECTION: ${QUEUE_CONNECTION:-database}
       DB_CONNECTION: mysql
       DB_HOST: mysql
@@ -45,6 +65,16 @@ services:
       DB_DATABASE: ${MYSQL_DATABASE}
       DB_USERNAME: ${MYSQL_USER}
       DB_PASSWORD: ${MYSQL_PASSWORD}
+      MAIL_MAILER: ${MAIL_MAILER:-smtp}
+      MAIL_HOST: ${MAIL_HOST:-}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_ENCRYPTION: ${MAIL_ENCRYPTION:-tls}
+      MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS:-}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-${APP_NAME:-BioLight}}
+      FEEDBACK_NOTIFICATION_EMAIL: ${FEEDBACK_NOTIFICATION_EMAIL:-}
+      BACKPACK_REGISTRATION_OPEN: ${BACKPACK_REGISTRATION_OPEN:-false}
       LOG_CHANNEL: stack
       LOG_LEVEL: ${LOG_LEVEL:-warning}
       TZ: ${TZ:-Europe/Kiev}
@@ -79,10 +109,21 @@ services:
     build:
       context: ./src/nuxt4
       dockerfile: Dockerfile
+      args:
+        NUXT4_SITE_URL: ${NUXT4_SITE_URL:-https://example.com}
+        NUXT4_API_BASE_PUBLIC: ${NUXT4_API_BASE_PUBLIC:-/api/}
+        NUXT4_BROWSER_ORIGIN: ${NUXT4_BROWSER_ORIGIN:-}
+        NUXT4_UPLOADS_ORIGIN: ${NUXT4_UPLOADS_ORIGIN:-}
+        NUXT4_IMAGE_DOMAINS: ${NUXT4_IMAGE_DOMAINS:-api,localhost,127.0.0.1}
     restart: unless-stopped
     environment:
       NODE_ENV: ${NODE_ENV:-production}
+      NUXT4_SITE_URL: ${NUXT4_SITE_URL:-https://example.com}
       NUXT_API_BASE_URL: ${NUXT4_API_BASE_URL:-http://api:8080/api/}
+      NUXT4_API_BASE_PUBLIC: ${NUXT4_API_BASE_PUBLIC:-/api/}
+      NUXT4_BROWSER_ORIGIN: ${NUXT4_BROWSER_ORIGIN:-}
+      NUXT4_UPLOADS_ORIGIN: ${NUXT4_UPLOADS_ORIGIN:-}
+      NUXT4_IMAGE_DOMAINS: ${NUXT4_IMAGE_DOMAINS:-api,localhost,127.0.0.1}
       TZ: ${TZ:-Europe/Kiev}
     depends_on:
       - api
@@ -130,6 +171,11 @@ services:
     environment:
       DOMAIN: ${DOMAIN:-example.com}
       SERVER_ALIASES: ${SERVER_ALIASES:-}
+      FRONTEND_DOMAIN: ${FRONTEND_DOMAIN:-}
+      FRONTEND_SERVER_ALIASES: ${FRONTEND_SERVER_ALIASES:-}
+      BACKEND_DOMAIN: ${BACKEND_DOMAIN:-}
+      BACKEND_SERVER_ALIASES: ${BACKEND_SERVER_ALIASES:-}
+      CERTBOT_PRIMARY_DOMAIN: ${CERTBOT_PRIMARY_DOMAIN:-}
       NGINX_RELOAD_INTERVAL: ${NGINX_RELOAD_INTERVAL:-5m}
     volumes:
       - certbot_conf:/etc/letsencrypt
@@ -144,13 +190,17 @@ services:
     environment:
       CERTBOT_EMAIL: ${CERTBOT_EMAIL}
       CERTBOT_DOMAINS: ${CERTBOT_DOMAINS}
+      CERTBOT_PRIMARY_DOMAIN: ${CERTBOT_PRIMARY_DOMAIN:-}
       CERTBOT_RENEW_INTERVAL: ${CERTBOT_RENEW_INTERVAL:-12h}
+      CERTBOT_STAGING: ${CERTBOT_STAGING:-false}
+      CERTBOT_FORCE_RENEWAL: ${CERTBOT_FORCE_RENEWAL:-false}
+      CERTBOT_ONE_SHOT: ${CERTBOT_ONE_SHOT:-false}
     entrypoint: /bin/sh
     command: -c "chmod +x /etc/certbot/renew.sh && /etc/certbot/renew.sh"
     volumes:
       - certbot_conf:/etc/letsencrypt
       - certbot_www:/var/www/certbot
-      - ./.docker/certbot/renew.sh:/etc/certbot/renew.sh:ro
+      - ./.docker/certbot:/etc/certbot:ro
 
 volumes:
   certbot_conf:

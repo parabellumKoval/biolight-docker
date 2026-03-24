@@ -11,7 +11,7 @@
 			<div class="article__inner">
 				<h1 class="title">{{ page.title }}</h1>
 				
-				<div class="article__content" v-html="page.content"></div>
+				<div class="article__content" v-html="page.content" ref="content"></div>
 			</div>
 		</div>
 	</div>

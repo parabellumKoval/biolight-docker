@@ -1,7 +1,13 @@
 export const imagePosition = {
 	methods: {
 		imagePosition(){
-			let images = this.$refs.content.querySelectorAll('img');
+			const content = this.$refs?.content
+
+			if (!content || typeof content.querySelectorAll !== 'function') {
+				return
+			}
+
+			let images = content.querySelectorAll('img');
 			
 			images.forEach(item => {
 				let floatValue = item.style.float;

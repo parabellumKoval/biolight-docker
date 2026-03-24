@@ -1,0 +1,185 @@
+route:
+  home: Home
+  contacts: Contacts
+  blog: Blog
+  'nashi-preimushhestva': Our advantages
+
+title:
+  chose_lang: Select Site Language
+  contacts: Contacts
+  add_order: Place an order
+  phones: Phones
+  email: Email
+  address: Our address
+  work_time: Work time
+  messangers: Messengers
+  connect_us: Contact us
+  other_articles: Other Related Articles
+  desc: Description
+  ingredients: Composition
+  product_category: Product Category
+  product_code: Product code
+  in_stock: In stock
+  glad_to_answer: We will be happy to answer all your questions
+  error: Error
+  thank: Thank you
+  ckeck_fields: Check if the fields are filled in correctly.
+  was_send: Your request has been sent to customer service. We will contact you shortly.
+  guard_1: This site is protected
+  guard_2: Google Privacy Policy
+  guard_3: Terms of Service
+  and: and
+  glad_to_support: We will be glad to provide expert advice
+  call_us: Call us
+  mail_us: Write to us
+
+language:
+  ru: Russian
+  uk: Ukrainian
+  en: English
+
+form:
+  name: Your name
+  phone: Your phone number
+  email: Your email
+  text: Enter your message
+  personal_data_text: "By clicking the Submit request button, you confirm your consent to the Company "
+  personal_data: processing your personal data
+
+page:
+  index:
+    experienced_team: Experienced Team
+    quality_control: Quality control
+    modern_production: Present-day production
+    manufacturing:
+      bad:
+        title: Dietary Supplements Manufacturing
+        items:
+          - title: Private Label Dietary Supplements Manufacturing
+            paragraphs:
+              - >-
+                This is a fast way to launch your own brand of vitamins and
+                dietary supplements without the need to build a factory or
+                purchase equipment for supplement manufacturing. Bio Light
+                offers professional contract manufacturing of dietary
+                supplements and a full cycle of services — from formula
+                development to finished product production and preparation of
+                all required documentation.
+          - title: Modern Dietary Supplement Production
+            paragraphs:
+              - >-
+                We provide modern dietary supplement manufacturing and
+                supplement production in Ukraine for brands, marketplaces,
+                pharmacy chains, and online stores. Our contract manufacturing
+                services allow entrepreneurs to quickly enter the market with
+                their own product using real production facilities and the
+                expertise of our technology team.
+              - >-
+                Bio Light is a dietary supplement manufacturing company that
+                supports projects at every stage: idea analysis, formula
+                development, raw material sourcing, laboratory testing, and
+                launching the supplement into production. We also consult
+                clients on regulatory requirements — helping to understand what
+                documents are needed for supplement manufacturing, assisting
+                with preparation, and explaining the procedures related to
+                registration and obtaining permits, including manufacturing
+                licenses where required.
+          - title: Contract Manufacturing of Dietary Supplements
+            paragraphs:
+              - >-
+                For entrepreneurs planning to scale their business, we help
+                explain how to organize dietary supplement manufacturing,
+                prepare a supplement manufacturing business plan, and establish
+                a contract manufacturing agreement. This approach allows you to
+                launch stable supplement production without large investments in
+                your own production facilities.
+              - >-
+                Our industrial dietary supplement production in Ukraine includes
+                capsules, tablets, powder blends, sachets, and liquid forms. It
+                is a modern supplement manufacturing facility that meets
+                international quality and safety standards. Thanks to the
+                contract manufacturing model, you can create your own line of
+                vitamins and nutraceuticals under your brand for sale in
+                pharmacies, online stores, and marketplaces.
+      vitamin:
+        title: Vitamin Manufacturing in Ukraine
+        highlights:
+          left:
+            - title: We control the formula
+              text: Strictly according to technical specifications
+            - title: We use raw materials
+              text: Certified to international standards
+            - title: We work with suppliers
+              text: Of raw materials and packaging from around the world
+          right:
+            - title: We manufacture on time
+              text: According to the contract terms
+            - title: We develop formulas
+              text: Based on scientific research
+            - title: We produce batches
+              text: Pilot and full-scale
+        items:
+          - title: Private Label Vitamin Manufacturing
+            paragraphs:
+              - >-
+                Contract vitamin manufacturing is an effective way to launch
+                your own brand without investing in building a factory or
+                complex production infrastructure. Bio Light provides private
+                label vitamin manufacturing and a full range of contract vitamin
+                manufacturing services in Ukraine — from formula development to
+                finished product production.
+              - >-
+                We provide vitamin manufacturing under a private label for
+                brands, pharmacy chains, marketplaces, and online stores.
+                Thanks to modern production lines and advanced technological
+                capabilities, our industrial vitamin manufacturing meets
+                international quality and safety standards.
+              - >-
+                Our solutions are based on modern vitamin production
+                technology, which includes laboratory research, raw material
+                quality control, and formula optimization. We apply new vitamin
+                manufacturing technologies as well as elements of
+                biotechnology-based vitamin production to create effective and
+                safe formulas for different consumer categories.
+          - title: Vitamin Manufacturing in Ukraine
+            paragraphs:
+              - >-
+                Our vitamin manufacturing in Ukraine includes formula
+                development, ingredient sourcing, testing, and full-scale
+                production. This allows brands to launch vitamins made in
+                Ukraine that meet international standards and consumer
+                expectations. Many of these products become some of the best
+                Ukrainian-made vitamins in their categories.
+              - >-
+                Bio Light also helps companies launch Private Label brands by
+                providing product development, contract manufacturing, and
+                consulting on product launch strategies and brand promotion.
+                This approach enables businesses and entrepreneurs to quickly
+                create their own line of vitamins, nutraceuticals, and dietary
+                supplements.
+              - >-
+                Our production facilities also support the manufacturing of
+                pharmaceuticals, vitamins, and biosynthesis-based products in
+                various dosage forms, including capsules, tablets, powder
+                blends, and liquid formulas.
+              - >-
+                By partnering with Bio Light, you gain a reliable partner for
+                contract vitamin manufacturing that delivers a complete cycle —
+                from product idea to successful market launch.
+
+btn:
+  catalog: Product Catalog
+  learn_more: Learn more
+  read_more: read more
+  watch_more: watch more
+  menu: Menu
+  all_contacts: all contacts
+  send_order: Send order
+  order: Order
+
+footer:
+  desc: Manufacturing, packaging, liquid filling, and encapsulation services for dietary supplements, vitamins, and nutraceuticals in Ukraine and Europe.
+  address: 2K Barykadna str., Dnipro, Dnipropetrovsk region, 49044, Ukraine
+  developer: 'Web development '
+  time_1: 'Mon - Fri: 9 AM – 6 PM'
+  time_2: 'Sat: 10 AM – 1 PM'

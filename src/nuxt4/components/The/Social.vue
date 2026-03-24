@@ -8,30 +8,30 @@
 		</div>
 		<ul class="socials__items">
 	      <li class="socials__item" v-if="$store.state.settings.telegram">
-	        <nuxt-picture src="/assets/images/socials/tel.png" alt="Telegram" width="24" height="24" sizes="24px" quality="80" format="webp" />
+	        <PictureAsset src="/assets/images/socials/tel.png" alt="Telegram" width="24" height="24" sizes="24px" quality="80" format="webp" />
 
         <a :href="$store.state.settings.telegram">
-          <span class="underline">Мы в Telegram</span>
+          <span class="underline">Telegram</span>
         </a>
       </li>
 
 	      <li class="socials__item" v-if="$store.state.settings.viber">
-	        <nuxt-picture src="/assets/images/socials/viber.png" alt="Viber" width="24" height="24" sizes="24px" quality="80" format="webp" />
+	        <PictureAsset src="/assets/images/socials/viber.png" alt="Viber" width="24" height="24" sizes="24px" quality="80" format="webp" />
 
         <a :href="$store.state.settings.viber">
-          <span class="underline">Мы в Viber</span>
+          <span class="underline">Viber</span>
         </a>
       </li>
 
 	      <li class="socials__item" v-if="$store.state.settings.whatsup">
-	        <nuxt-picture src="/assets/images/socials/wat.png" alt="WhatsApp" width="24" height="24" sizes="24px" quality="80" format="webp" />
+	        <PictureAsset src="/assets/images/socials/wat.png" alt="WhatsApp" width="24" height="24" sizes="24px" quality="80" format="webp" />
 
         <a :href="$store.state.settings.whatsup">
-          <span class="underline">Мы в Whatsup</span>
+          <span class="underline">WhatsApp</span>
         </a>
       </li>
 	      <li class="socials__item">
-	        <nuxt-picture src="/assets/images/socials/gmail.png" alt="Email" width="24" height="24" sizes="24px" quality="80" format="webp" />
+	        <PictureAsset src="/assets/images/socials/gmail.png" alt="Email" width="24" height="24" sizes="24px" quality="80" format="webp" />
 					<a class="unselectable wp underline" :href="'mailto:' + $store.state.settings.email">
 						{{ $store.state.settings.email }}
 					</a>

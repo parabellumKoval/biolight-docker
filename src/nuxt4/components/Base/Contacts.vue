@@ -33,26 +33,26 @@
 			<div class="contacts__item">
 				<ul class="socials">
 		        <li class="socials__item">
-		          <nuxt-picture src="/assets/images/socials/tel.png" alt="Telegram" width="24" height="24" sizes="24px" quality="80" format="webp" />
+		          <PictureAsset src="/assets/images/socials/tel.png" alt="Telegram" width="24" height="24" sizes="24px" quality="80" format="webp" />
 		
 		          <a :href="$store.state.settings.telegram">
-		            <span class="underline">Мы в Telegram</span>
+		            <span class="underline">Telegram</span>
 		          </a>
 		        </li>
 		
 		        <li class="socials__item">
-		          <nuxt-picture src="/assets/images/socials/viber.png" alt="Viber" width="24" height="24" sizes="24px" quality="80" format="webp" />
+		          <PictureAsset src="/assets/images/socials/viber.png" alt="Viber" width="24" height="24" sizes="24px" quality="80" format="webp" />
 		
 		          <a :href="$store.state.settings.viber">
-		            <span class="underline">Мы в Viber</span>
+		            <span class="underline">Viber</span>
 		          </a>
 		        </li>
 		
 		        <li class="socials__item">
-		          <nuxt-picture src="/assets/images/socials/wat.png" alt="WhatsApp" width="24" height="24" sizes="24px" quality="80" format="webp" />
+		          <PictureAsset src="/assets/images/socials/wat.png" alt="WhatsApp" width="24" height="24" sizes="24px" quality="80" format="webp" />
 		
 		          <a :href="$store.state.settings.whatsup">
-		            <span class="underline">Мы в Whatsup</span>
+		            <span class="underline">WhatsApp</span>
 		          </a>
 		        </li>
 	      </ul>
@@ -61,10 +61,10 @@
 		</div>
 		
 		<div class="contacts-bg">
-			<nuxt-picture src="/assets/images/bio-bg.jpg" sizes="sm:150px lg:452px" quality="80" format="webp" />
+			<PictureAsset src="/assets/images/bio-bg.jpg" sizes="sm:150px lg:452px" quality="80" format="webp" />
 		</div>
 		<div class="contacts-img">
-			<nuxt-picture src="/assets/images/manager.png" sizes="sm:150px lg:316px" quality="100" format="webp" />
+			<PictureAsset src="/assets/images/manager.png" sizes="sm:150px lg:316px" quality="100" format="webp" />
 		</div>
 		
 	</div>

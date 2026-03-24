@@ -203,7 +203,7 @@ const redirects = [
     },
     {
         "from": "/ru/tara/",
-        "to": "https://biolight.com.ua/"
+        "to": "/"
     },
     {
         "from": "/ru/vlagopoglotiteli/",

@@ -1,5 +1,7 @@
 # Docker инфраструктура
 
+Подробная пошаговая инструкция для прод-сервера: [PROD_DEPLOY.md](./PROD_DEPLOY.md)
+
 Этот проект развернут в Docker со следующими контейнерами:
 
 - `api` (Laravel API + Backpack admin)

@@ -43,7 +43,12 @@ services:
       target: dev
     environment:
       NODE_ENV: development
+      NUXT4_SITE_URL: ${NUXT4_SITE_URL:-http://localhost:8088}
       NUXT_API_BASE_URL: ${NUXT4_API_BASE_URL:-http://api:8080/api/}
+      NUXT4_API_BASE_PUBLIC: ${NUXT4_API_BASE_PUBLIC:-/api/}
+      NUXT4_BROWSER_ORIGIN: ${NUXT4_BROWSER_ORIGIN:-http://localhost:8088}
+      NUXT4_UPLOADS_ORIGIN: ${NUXT4_UPLOADS_ORIGIN:-}
+      NUXT4_IMAGE_DOMAINS: ${NUXT4_IMAGE_DOMAINS:-api,localhost,127.0.0.1}
     command: sh -lc "npm install --no-fund --no-audit && exec npm run dev"
     volumes:
       - ./src/nuxt4:/app
@@ -57,5 +62,10 @@ services:
     environment:
       DOMAIN: ${DOMAIN:-localhost}
       SERVER_ALIASES: ${SERVER_ALIASES:-}
+      FRONTEND_DOMAIN: ${FRONTEND_DOMAIN:-}
+      FRONTEND_SERVER_ALIASES: ${FRONTEND_SERVER_ALIASES:-}
+      BACKEND_DOMAIN: ${BACKEND_DOMAIN:-}
+      BACKEND_SERVER_ALIASES: ${BACKEND_SERVER_ALIASES:-}
+      CERTBOT_PRIMARY_DOMAIN: ${CERTBOT_PRIMARY_DOMAIN:-}
     ports:
       - "${DEV_NGINX_PORT:-8088}:80"

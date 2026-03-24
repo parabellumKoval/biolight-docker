@@ -24,6 +24,15 @@ import { computed, useAttrs } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
+const assetModules = import.meta.glob('../assets/**/*.{png,jpg,jpeg,webp,avif,gif,svg}', {
+  eager: true,
+  import: 'default'
+})
+
+const assetMap = Object.fromEntries(
+  Object.entries(assetModules).map(([path, url]) => [path.replace('../assets', '/assets'), url])
+)
+
 const props = defineProps({
   alt: {
     type: String,
@@ -71,22 +80,25 @@ const normalizeSrc = (raw) => {
 
   if (/^https?:\/\//.test(value) || value.startsWith('data:')) return value
 
-  // Nuxt public assets.
-  if (value.startsWith('/assets/') || value.startsWith('/uploads/')) {
-    if (value.startsWith('/uploads/') && apiOrigin.value) {
-      // Let IPX fetch from the internal API container and generate optimized variants.
-      return `${apiOrigin.value}${value}`
-    }
-    return value
+  const normalizedValue = value
+    .replace(/^~\//, '/')
+    .replace(/^assets\//, '/assets/')
+    .replace(/^uploads\//, '/uploads/')
+
+  if (normalizedValue.startsWith('/assets/')) {
+    return assetMap[normalizedValue] || normalizedValue
   }
 
-  // Legacy patterns.
-  if (value.startsWith('~/')) return `/${value.slice(2).replace(/^\/+/, '')}`
-  if (value.startsWith('assets/')) return `/${value}`
-  if (value.startsWith('uploads/') && apiOrigin.value) return `${apiOrigin.value}/${value}`
+  if (normalizedValue.startsWith('/uploads/')) {
+    if (apiOrigin.value) {
+      // Let IPX fetch from the internal API container and generate optimized variants.
+      return `${apiOrigin.value}${normalizedValue}`
+    }
+    return normalizedValue
+  }
 
-  if (value.startsWith('/')) return value
-  return `/${value}`
+  if (normalizedValue.startsWith('/')) return normalizedValue
+  return `/${normalizedValue}`
 }
 
 const resolvedSrc = computed(() => normalizeSrc(props.src))

@@ -66,18 +66,18 @@
 				      <template v-if="$store.state.settings.whatsup">,</template>
 		          <a class="unselectable wp underline" 
 			          	v-if="$store.state.settings.whatsup"
-				          :href="$store.state.settings.whatsup">Whatsup</a>
+				          :href="$store.state.settings.whatsup">WhatsApp</a>
             </div>
 
 
           </div>
 
           <div class="contacts__map">
-            <nuxt-picture
+            <NuxtImg
               src="/assets/images/map.png"
               alt="map"
-              sizes="sm:100vw lg:560px"
-              quality="80"
+              sizes="sm:100vw lg:860px"
+              quality="100"
               format="webp"
             />
           </div>

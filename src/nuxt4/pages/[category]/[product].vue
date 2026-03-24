@@ -8,15 +8,26 @@
 				<div class="product__slider">
 					<div class="product__img">
 						<transition name="fade">
-							<nuxt-picture :src="currentImg" sizes="sm:100vw lg:520px" quality="90" format="webp" v-if="currentImg"/>
+							<PictureAsset
+                v-if="currentImgSrc"
+                :src="currentImgSrc"
+                :alt="product.name || ''"
+                sizes="sm:100vw lg:520px"
+                provider="ipx"
+              />
 						</transition>
 					</div>
-					<div class="product__slider-images" v-if="product.images && product.images.length > 1">
+					<div class="product__slider-images" v-if="productImages.length > 1">
 						<div class="product__slider-image" 
-									v-for="(image, index) in product.images" 
+									v-for="(productImage, index) in productImages" 
 									:class="{active: checkImage(index)}"
 									@click="setImage(index)">
-							<nuxt-picture :src="image" sizes="sm:88px lg:88px" quality="20" format="webp" />
+							<PictureAsset
+                :src="productImage"
+                :alt="product.name || ''"
+                sizes="sm:88px lg:88px"
+                provider="ipx"
+              />
 						</div>
 					</div>
 				</div>
@@ -70,6 +81,7 @@
 
 <script setup>
 import { computed, reactive, ref, watch } from 'vue'
+import { normalizeImageSrc } from '@/utils/normalize-image-src'
 
 const route = useRoute()
 const { $store } = useNuxtApp()
@@ -104,6 +116,8 @@ watch([() => route.params.product, () => route.path], () => {
 })
 
 const currentImg = computed(() => product.value?.images?.[image.selected])
+const currentImgSrc = computed(() => normalizeImageSrc(currentImg.value))
+const productImages = computed(() => (product.value?.images || []).map((value) => normalizeImageSrc(value)))
 const seoTitle = computed(() => product.value?.seo?.meta_title || product.value?.name || '')
 const seoDesc = computed(() => product.value?.seo?.meta_description || '')
 

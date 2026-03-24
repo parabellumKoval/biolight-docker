@@ -7,7 +7,7 @@
 {!! $feedback->text ? '<b>Содержание:</b>&nbsp;' . $feedback->text . '<br>': '' !!}
 {!! $feedback->product_name ? '<b>Товар:</b>&nbsp;' . $feedback->product_name . '<br>': '' !!}
 
-@component('mail::button', ['url' => 'https://biolight.com.ua:8888/admin/feedback/' . $feedback->id . '/show'])
+@component('mail::button', ['url' => rtrim(config('app.admin_url') ?: config('app.url'), '/') . '/admin/feedback/' . $feedback->id . '/show'])
 Подробнее
 @endcomponent
 

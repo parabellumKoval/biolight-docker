@@ -1,3 +1,64 @@
+const apiBase =
+  process.env.NUXT_API_BASE ??
+  process.env.NUXT4_API_INTERNAL_URL ??
+  process.env.NUXT4_API_BASE_URL ??
+  process.env.NUXT_API_BASE_URL ??
+  'http://api:8080/api/'
+
+const browserOrigin =
+  process.env.NUXT_PUBLIC_BROWSER_ORIGIN ??
+  process.env.NUXT4_BROWSER_ORIGIN ??
+  (process.env.NODE_ENV === 'development' ? 'http://localhost:8088' : '')
+
+const publicApiBase =
+  process.env.NUXT_PUBLIC_API_BASE ??
+  process.env.NUXT4_API_BASE_PUBLIC ??
+  '/api/'
+
+const uploadsOrigin =
+  process.env.NUXT_PUBLIC_UPLOADS_ORIGIN ??
+  process.env.NUXT4_UPLOADS_ORIGIN ??
+  ''
+
+const siteUrl =
+  process.env.NUXT_PUBLIC_SITE_URL ??
+  process.env.NUXT4_SITE_URL ??
+  (browserOrigin || 'https://example.com')
+
+const apiOrigin = /^https?:\/\//.test(apiBase)
+  ? apiBase.replace(/\/api\/?$/, '').replace(/\/+$/, '')
+  : ''
+
+const imageDomains = Array.from(
+  new Set(
+    [
+      'api',
+      'localhost',
+      '127.0.0.1',
+      ...((process.env.NUXT4_IMAGE_DOMAINS || '')
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean)
+        .flatMap((value) => {
+          try {
+            return /^https?:\/\//.test(value) ? [new URL(value).hostname] : [value]
+          } catch {
+            return [value]
+          }
+        })),
+      ...[browserOrigin, siteUrl, publicApiBase, uploadsOrigin]
+        .filter(Boolean)
+        .flatMap((value) => {
+          try {
+            return /^https?:\/\//.test(value) ? [new URL(value).hostname] : []
+          } catch {
+            return []
+          }
+        })
+    ].filter(Boolean)
+  )
+)
+
 export default defineNuxtConfig({
   ssr: true,
 
@@ -8,41 +69,32 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/i18n', '@nuxt/image'],
 
   runtimeConfig: {
-    apiBase: process.env.NUXT4_API_INTERNAL_URL ?? process.env.NUXT4_API_BASE_URL ?? process.env.NUXT_API_BASE_URL ?? 'http://api:8080/api/',
+    apiBase,
     public: {
-      apiBase: process.env.NUXT4_API_BASE_PUBLIC ?? '/api/',
+      apiBase: publicApiBase,
+      browserOrigin,
       // Used by Nuxt Image (IPX) to fetch uploaded images from the API in a stable way on both SSR + client.
-      // Can be overridden via `NUXT4_UPLOADS_ORIGIN`. Example: `http://api:8080`.
-      uploadsOrigin:
-        process.env.NUXT4_UPLOADS_ORIGIN ??
-        ((): string => {
-          const base =
-            process.env.NUXT4_API_INTERNAL_URL ??
-            process.env.NUXT4_API_BASE_URL ??
-            process.env.NUXT_API_BASE_URL ??
-            'http://api:8080/api/'
-          if (!/^https?:\/\//.test(base)) return ''
-          return base.replace(/\/api\/?$/, '').replace(/\/+$/, '')
-        })()
+      // Can be overridden via `NUXT4_UPLOADS_ORIGIN`. Example: `https://admin.example.com`.
+      uploadsOrigin: uploadsOrigin || apiOrigin,
+      siteUrl
     }
   },
 
   image: {
     provider: 'ipx',
-    // Allow optimizing images served by the API container in docker-compose (`http://api:8080/...`).
-    domains: ['api', 'localhost', '127.0.0.1', 'biolight.com.ua', 'www.biolight.com.ua']
+    domains: imageDomains
   },
 
   nitro: {
     devProxy: {
       '/api': {
-        target: process.env.NUXT4_API_INTERNAL_URL ?? process.env.NUXT4_API_BASE_URL ?? process.env.NUXT_API_BASE_URL ?? 'http://api:8080/',
+        target: apiBase,
         changeOrigin: true
       },
       // Uploaded images are served from the Laravel API container under `/uploads/...`.
       // In dev, Nuxt runs on `localhost:3080`, so without this proxy `/uploads/...` would 404.
       '/uploads': {
-        target: process.env.NUXT4_API_INTERNAL_URL ?? process.env.NUXT4_API_BASE_URL ?? process.env.NUXT_API_BASE_URL ?? 'http://api:8080/',
+        target: apiOrigin || 'http://api:8080',
         changeOrigin: true
       }
     }
@@ -65,11 +117,11 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: 'lang',
     vueI18n: './i18n/i18n.config.ts',
-    baseUrl: 'https://biolight.com.ua',
+    baseUrl: siteUrl,
     locales: [
       {
         code: 'ru',
-        file: 'ru.js',
+        file: 'ru.yaml',
         language: 'ru-RU',
         name: 'Русский',
         shortName: 'RU',
@@ -77,7 +129,7 @@ export default defineNuxtConfig({
       },
       {
         code: 'uk',
-        file: 'uk.js',
+        file: 'uk.yaml',
         language: 'uk-UA',
         name: 'Українська',
         shortName: 'UA',
@@ -85,7 +137,7 @@ export default defineNuxtConfig({
       },
       {
         code: 'en',
-        file: 'en.js',
+        file: 'en.yaml',
         language: 'en-US',
         name: 'English',
         shortName: 'EN',

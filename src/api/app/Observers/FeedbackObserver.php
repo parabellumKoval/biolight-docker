@@ -16,9 +16,9 @@ class FeedbackObserver
      * @return void
      */
     public function created(Feedback $feedback)
-    {	
-	    // Queue email sending so the API request isn't blocked by SMTP latency.
-	    Mail::to('office@biolight.com.ua')->queue(new FeedbackCreated($feedback));
+    {
+        // Queue email sending so the API request isn't blocked by SMTP latency.
+        Mail::to(config('mail.feedback_notification_email'))->queue(new FeedbackCreated($feedback));
 //  	    Mail::to('parabellum.koval@gmail.com')->send(new FeedbackCreated($feedback));
     }
 

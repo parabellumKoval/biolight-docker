@@ -1,7 +1,12 @@
 <template>
 	<div class="product">
 		<div class="product__img">
-			<nuxt-picture :src="data.image" sizes="sm:100vw lg:290px" quality="80" format="webp" />
+			<PictureAsset
+        :src="resolvedImage"
+        :alt="data.name || ''"
+        sizes="sm:100vw lg:290px"
+        provider="ipx"
+      />
 		</div>
 		<nuxt-link :to="localePath(data.link)" class="product__name">{{ data.name }}</nuxt-link>
 		
@@ -19,6 +24,8 @@
 	</div>
 </template>
 <script>
+	import { normalizeImageSrc } from '@/utils/normalize-image-src'
+
 	export default {
 		setup() {
 			const localePath = useLocalePath()
@@ -40,6 +47,11 @@
 						price: ''
 					}
 				}
+			}
+		},
+		computed: {
+			resolvedImage() {
+				return normalizeImageSrc(this.data?.image)
 			}
 		},
 		methods: {

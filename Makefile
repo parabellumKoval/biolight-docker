@@ -21,7 +21,7 @@ endif
 COMPOSE := docker compose --env-file $(ENV_FILE) $(COMPOSE_FILES)
 DUMP_DIR := $(DOCKER_DATA_DIR)/mysql/dumps
 
-.PHONY: help setup up bup down stop start restart ps logs exec build db.dump db.import
+.PHONY: help setup up bup down stop start restart ps logs exec build db.dump db.import cert.test cert.renew cert.status
 
 help:
 	@printf '%s\n' \
@@ -35,6 +35,9 @@ help:
 		'  make api.bup MODE=dev' \
 		'  make db.dump FILE=backup.sql' \
 		'  make db.import FILE=backup.sql' \
+		'  make cert.test MODE=prod' \
+		'  make cert.renew MODE=prod' \
+		'  make cert.status MODE=prod' \
 		'  Set DEFAULT_MODE in .env.docker to change the default make mode'
 
 setup:
@@ -101,6 +104,19 @@ db.dump: setup
 
 db.import: setup
 	$(COMPOSE) exec -T mysql sh -lc 'mysql -u"$${MYSQL_USER}" -p"$${MYSQL_PASSWORD}" "$${MYSQL_DATABASE}"' < $(DUMP_DIR)/$(FILE)
+
+cert.test:
+	$(COMPOSE) run --rm -e CERTBOT_STAGING=true -e CERTBOT_FORCE_RENEWAL=true -e CERTBOT_ONE_SHOT=true certbot /etc/certbot/test-renew.sh
+	$(COMPOSE) exec nginx nginx -s reload
+	$(MAKE) cert.status MODE=$(MODE)
+
+cert.renew:
+	$(COMPOSE) run --rm -e CERTBOT_ONE_SHOT=true certbot
+	$(COMPOSE) exec nginx nginx -s reload
+	$(MAKE) cert.status MODE=$(MODE)
+
+cert.status:
+	$(COMPOSE) run --rm certbot -c "certbot certificates"
 
 dev.up:
 	$(MAKE) up MODE=dev

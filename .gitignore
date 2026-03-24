@@ -6,6 +6,9 @@
 /src/api/storage/*.key
 /src/api/vendor
 .env
+.env.docker
+.env.docker.local
+.env.docker.*.local
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
@@ -15,5 +18,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/data
+/.data
 .docker/volumes
 /.docker/volumes

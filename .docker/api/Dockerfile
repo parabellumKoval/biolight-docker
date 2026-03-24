@@ -1,5 +1,8 @@
 FROM php:8.1-cli-bullseye
 
+ARG COMPOSER_AUTH
+ENV COMPOSER_AUTH=${COMPOSER_AUTH}
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         git \

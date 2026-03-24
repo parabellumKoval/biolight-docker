@@ -4,7 +4,13 @@
 	    <div class="container">
 	      <div class="header__inner" >
 	        <nuxt-link :to="localePath('/')" class="header__logo">
-	          <nuxt-picture :src="logoSrc" sizes="sm:100px md:156px lg:230px" format="webp" />
+	          <NuxtImg
+              src="/assets/icons/logo2.png"
+              alt="Bio Light"
+              width="1123"
+              height="238"
+              sizes="sm:102px lg:156px"
+            />
 	        </nuxt-link>
 	        
 	        <button class="menu-btn-mobile" @click="openMenu()" :class="{active: $store.state.menu.isShow}">
@@ -48,8 +54,6 @@
 </template>
 
 <script>
-import logoSrc from '@/assets/icons/logo2.png'
-
 export default {
   setup() {
     const localePath = useLocalePath()
@@ -57,7 +61,6 @@ export default {
   },
   data() {
     return {
-      logoSrc,
       lang: {
         title: 'рус',
         img: '/assets/icons/ru.svg'

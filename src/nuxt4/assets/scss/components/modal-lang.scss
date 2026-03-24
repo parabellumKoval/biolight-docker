@@ -4,11 +4,13 @@
 .locales {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	gap: 24px;
 	
 	@include _768 {
     flex-direction: column;
     align-items: center;
+		gap: 0;
 	}
 	
 	&__item {
@@ -18,20 +20,17 @@
 		font-size: 16px;
 		line-height: 130%;
 		color: $color-dark;
+		padding: 10px 14px;
+		border-radius: 12px;
+		background: rgba(130, 193, 34, 0.08);
 		
 		&:hover {
 			color: $color-green-hover;
+			background: rgba(130, 193, 34, 0.12);
 		}
 		
 		@include _768 {
 			margin-bottom: 30px;
-		}
-		
-		img {
-			display: inline-block;
-			width: 30px;
-			height: 30px;
-			margin-right: 10px;
 		}
 	}
 }

@@ -50,7 +50,7 @@
 		      <template v-if="$store.state.settings.whatsup">,</template>
           <a class="unselectable wp underline" 
 	          	v-if="$store.state.settings.whatsup"
-		          :href="$store.state.settings.whatsup">Whatsup</a>
+		          :href="$store.state.settings.whatsup">WhatsApp</a>
         </div>
 
         <div class="contacts__row">
