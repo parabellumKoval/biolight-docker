@@ -60,6 +60,22 @@
             </div>
           </article>
         </div>
+
+        <div class="manufacturing__vitamin-items">
+          <article
+            v-for="(item, index) in vitaminItems"
+            :key="`item-${index}`"
+            class="manufacturing__vitamin-item"
+          >
+            <h3 class="manufacturing__vitamin-item-title">{{ item.title }}</h3>
+
+            <div class="manufacturing__vitamin-item-text">
+              <p v-for="(paragraph, paragraphIndex) in item.paragraphs" :key="paragraphIndex">
+                {{ paragraph }}
+              </p>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -87,6 +103,13 @@ const vitaminHighlights = computed(() => {
     mobile: [...left, ...right]
   }
 })
+
+const vitaminItems = computed(() =>
+  (tm('page.index.manufacturing.vitamin.items') || []).map((item) => ({
+    title: rt(item.title),
+    paragraphs: (item.paragraphs || []).map((paragraph) => rt(paragraph))
+  }))
+)
 </script>
 
 <style lang="scss" src="@/assets/scss/components/home-manufacturing-block.scss"></style>
