@@ -1,10 +1,8 @@
 #!/bin/sh
 set -e
 
-chmod +x /etc/certbot/certbot-once.sh
-
 while true; do
-  /etc/certbot/certbot-once.sh || true
+  sh /etc/certbot/certbot-once.sh || true
 
   if [ "${CERTBOT_ONE_SHOT:-false}" = "true" ]; then
     exit 0

@@ -196,7 +196,7 @@ services:
       CERTBOT_FORCE_RENEWAL: ${CERTBOT_FORCE_RENEWAL:-false}
       CERTBOT_ONE_SHOT: ${CERTBOT_ONE_SHOT:-false}
     entrypoint: /bin/sh
-    command: -c "chmod +x /etc/certbot/renew.sh && /etc/certbot/renew.sh"
+    command: -c "sh /etc/certbot/renew.sh"
     volumes:
       - certbot_conf:/etc/letsencrypt
       - certbot_www:/var/www/certbot
