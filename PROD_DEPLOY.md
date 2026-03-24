@@ -53,6 +53,19 @@ DOCKER_DATA_DIR=/opt/biolight/data
 docker compose --env-file .env.docker run --rm api php artisan key:generate --show
 ```
 
+Важно:
+
+- команда с `--show` только печатает ключ в stdout;
+- она не записывает `APP_KEY` обратно в `.env.docker`;
+- полученное значение нужно вручную вставить в строку `APP_KEY=...` в `.env.docker`;
+- после этого нужно пересоздать контейнеры `api` и `queue`, чтобы они получили новое окружение.
+
+Пример:
+
+```dotenv
+APP_KEY=base64:cnU38ILzdAGukWjZY055plUflC4M38WkZKSfPmSUX34=
+```
+
 ## 3. Где прописывать домены
 
 ### Вариант A. Один домен на всё
